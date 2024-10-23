@@ -31,9 +31,9 @@
    - [Securing Domain Controllers](#securing-domain-controllers)
 9. [Folder Redirection and Home Folders](#folder-redirection-and-home-folders)
    - [Creating Centralized Home Folders](#creating-centralized-home-folders)
-10. [Additional Resources](#additional-resources)
-11. [Tools and Scripts](#tools-and-scripts)
-12. [Conclusion](#conclusion)
+10. [Tools and Scripts](#tools-and-scripts)
+11. [Conclusion](#conclusion)
+12. [Resources](#resources)
 
 ---
 
@@ -59,6 +59,7 @@ This guide provides a comprehensive framework for the installation, configuratio
 ---
 
 ## **1. Installation of Active Directory**
+
 ### **Installation Steps**
 1. Open **Server Manager** on your Windows Server.
 2. Select **Add Roles and Features**.
@@ -77,6 +78,7 @@ This guide provides a comprehensive framework for the installation, configuratio
 ## **2. Basic Active Directory Management**
 
 ### **2.1 User and Group Management**
+
 #### **Creating Users**
 1. Open **Active Directory Users and Computers**.
 2. Right-click the desired **Organizational Unit (OU)**.
@@ -101,10 +103,10 @@ This guide provides a comprehensive framework for the installation, configuratio
 ### **3.1 Least Privilege Principle**
 - **Enforce the Least Privilege Principle**:
   - Limit administrative rights to only those who need them.
-  - Implement **Role-Based Access Control (RBAC)** for more granular permissions, ensuring that users only have access to resources necessary for their job functions .
+  - Implement **Role-Based Access Control (RBAC)** for more granular permissions, ensuring that users only have access to resources necessary for their job functions.
 
 ### **3.2 Privileged Access Workstations (PAWs)**
-- Utilize **Privileged Access Workstations** for administrative tasks to mitigate risks associated with malware and unauthorized access. PAWs should be isolated from the rest of the network and run minimal services .
+- Utilize **Privileged Access Workstations** for administrative tasks to mitigate risks associated with malware and unauthorized access. PAWs should be isolated from the rest of the network and run minimal services.
 
 ### **3.3 Secure Password Policies**
 1. Enforce strong password policies:
@@ -117,7 +119,7 @@ This guide provides a comprehensive framework for the installation, configuratio
    - Navigate to **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Password Policy**.
 
 ### **3.4 Multi-Factor Authentication (MFA)**
-- Implement MFA for administrative accounts and users accessing sensitive resources. Use Azure AD MFA or Windows Hello for Business as secure options .
+- Implement MFA for administrative accounts and users accessing sensitive resources. Use Azure AD MFA or Windows Hello for Business as secure options.
 
 ---
 
@@ -127,13 +129,13 @@ This guide provides a comprehensive framework for the installation, configuratio
 1. Enable auditing:
    - Open **Group Policy Management**.
    - Navigate to **Computer Configuration > Policies > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Audit Policies > Directory Service Access**.
-   - Enable **Audit Directory Service Changes** to monitor changes made to AD objects .
+   - Enable **Audit Directory Service Changes** to monitor changes made to AD objects.
 
 ### **4.2 SIEM Integration**
-- Integrate Active Directory logs with a **Security Information and Event Management (SIEM)** solution (e.g., Microsoft Sentinel, Splunk) for real-time monitoring and alerting on suspicious activities .
+- Integrate Active Directory logs with a **Security Information and Event Management (SIEM)** solution (e.g., Microsoft Sentinel, Splunk) for real-time monitoring and alerting on suspicious activities.
 
 ### **4.3 Backup and Recovery Plan**
-- Create and document a comprehensive backup and recovery plan for Active Directory to ensure business continuity. Utilize tools like Windows Server Backup or System State backup to protect AD data .
+- Create and document a comprehensive backup and recovery plan for Active Directory to ensure business continuity. Utilize tools like Windows Server Backup or System State backup to protect AD data.
 
 ---
 
@@ -179,17 +181,19 @@ Get-ADUser -Filter {LastLogonDate -lt $DateThreshold} | Select-Object Name, Last
 ## **6. Mitigating Common Active Directory Security Threats**
 
 ### **6.1 Pass-the-Hash and Pass-the-Ticket Attacks**
-- Implement **Microsoft Local Administrator Password Solution (LAPS)** for secure local admin password management. This helps ensure unique local admin passwords across devices .
-- Configure Kerberos with a **short ticket lifespan** (e.g., 4 hours) to reduce exposure to ticket-based attacks .
+- Implement **Microsoft Local Administrator Password Solution (LAPS)** for secure local admin password management. This helps ensure unique local admin passwords across devices.
+- Configure Kerberos with a **short ticket lifespan** (e.g., 4 hours) to reduce exposure to ticket-based attacks.
 
 ### **6.2 Securing Domain Controllers**
-- Disable unnecessary services and limit network access to **Domain Controllers**. Employ **Secure Boot**, **BitLocker**, and **Windows Defender Credential Guard** for enhanced security  .
+- Disable unnecessary services and limit network access to **Domain Controllers**. Employ **Secure Boot**, **BitLocker**, and **Windows Defender Credential Guard** for enhanced security.
 
 ---
 
 ## **7. Folder Redirection and Home Folders**
 
-### **7.1 Creating Centralized Home Folders**
+### **7.1 Creating Central
+
+ized Home Folders**
 1. Configure folder redirection:
    - Open **Group Policy Management**.
    - Navigate to **User Configuration > Policies > Windows Settings > Folder Redirection**.
@@ -197,17 +201,10 @@ Get-ADUser -Filter {LastLogonDate -lt $DateThreshold} | Select-Object Name, Last
 
 ---
 
-## **8. Additional Resources**
-- **Microsoft Documentation on Active Directory Security**: [Best Practices for Securing Active Directory](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
-- **National Institute of Standards and Technology (NIST)**: [Guide to Enterprise Password Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf).
-- **CIS Controls**: [Center for Internet Security](https://www.cisecurity.org/controls/).
-
----
-
 ## **9. Tools and Scripts**
 The repository contains useful **PowerShell scripts** for automating administrative tasks:
-- **user_audit.ps1:** Audits user activity and logins. 
-- **password_policy_audit.ps1:** Checks compliance with password policies. 
+- **user_audit.ps1:** Audits user activity and logins.
+- **password_policy_audit.ps1:** Checks compliance with password policies.
 - **account_expiry_check.ps1:** Identifies accounts nearing expiration.
 - **inactive_users_check.ps1:** Identifies user accounts that have been inactive for a specified period.
 
@@ -215,3 +212,10 @@ The repository contains useful **PowerShell scripts** for automating administrat
 
 ## **10. Conclusion**
 This guide serves as a comprehensive resource for setting up, managing, and securing **Microsoft Active Directory**. It emphasizes security hardening, automation, and best practices that are essential for maintaining a secure IT environment. This guide is suitable for both **system administrators** and professionals focused on **cybersecurity**.
+
+---
+
+## **8. Resources**
+- **Microsoft Documentation on Active Directory Security**: [Best Practices for Securing Active Directory](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
+- **National Institute of Standards and Technology (NIST)**: [Guide to Enterprise Password Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf).
+- **CIS Controls**: [Center for Internet Security](https://www.cisecurity.org/controls/).

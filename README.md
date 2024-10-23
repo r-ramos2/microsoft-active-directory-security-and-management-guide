@@ -1,5 +1,42 @@
 # **Microsoft Active Directory Security and Management Guide**
 
+## **Table of Contents**
+
+1. [Overview](#overview)
+2. [Prerequisites](#prerequisites)
+3. [Installation of Active Directory](#installation-of-active-directory)
+   - [Installation Steps](#installation-steps)
+   - [Verification](#verification)
+4. [Basic Active Directory Management](#basic-active-directory-management)
+   - [User and Group Management](#user-and-group-management)
+     - [Creating Users](#creating-users)
+     - [Creating Groups](#creating-groups)
+   - [Group Policies Overview](#group-policies-overview)
+5. [Security Hardening Active Directory](#security-hardening-active-directory)
+   - [Least Privilege Principle](#least-privilege-principle)
+   - [Privileged Access Workstations (PAWs)](#privileged-access-workstations-paws)
+   - [Secure Password Policies](#secure-password-policies)
+   - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
+6. [Active Directory Auditing and Monitoring](#active-directory-auditing-and-monitoring)
+   - [Auditing Changes](#auditing-changes)
+   - [SIEM Integration](#siem-integration)
+   - [Backup and Recovery Plan](#backup-and-recovery-plan)
+7. [Automating Security Tasks with PowerShell](#automating-security-tasks-with-powershell)
+   - [Automated User Auditing](#automated-user-auditing)
+   - [Automating Group Policy Changes](#automating-group-policy-changes)
+   - [Password Policy Compliance Check](#password-policy-compliance-check)
+   - [Identifying Inactive Accounts](#identifying-inactive-accounts)
+8. [Mitigating Common Active Directory Security Threats](#mitigating-common-active-directory-security-threats)
+   - [Pass-the-Hash and Pass-the-Ticket Attacks](#pass-the-hash-and-pass-the-ticket-attacks)
+   - [Securing Domain Controllers](#securing-domain-controllers)
+9. [Folder Redirection and Home Folders](#folder-redirection-and-home-folders)
+   - [Creating Centralized Home Folders](#creating-centralized-home-folders)
+10. [Additional Resources](#additional-resources)
+11. [Tools and Scripts](#tools-and-scripts)
+12. [Conclusion](#conclusion)
+
+---
+
 ## **Overview**
 This guide provides a comprehensive framework for the installation, configuration, management, and security of **Microsoft Active Directory (AD)**. Active Directory serves as a centralized repository for managing user accounts, computers, groups, and network resources, enabling efficient user authentication and authorization. This guide emphasizes **security best practices**, automation, and effective management strategies, making it invaluable for IT professionals and cybersecurity practitioners.
 
@@ -11,30 +48,6 @@ This guide provides a comprehensive framework for the installation, configuratio
 - Configuration and management of Group Policy Objects (GPOs).
 - Centralized file management through home folder redirection.
 - Security hardening techniques against prevalent AD threats.
-
----
-
-## **Table of Contents**
-1. [Prerequisites](#prerequisites)
-2. [Installation of Active Directory](#installation-of-active-directory)
-3. [Basic Active Directory Management](#basic-active-directory-management)
-   - [User and Group Management](#user-and-group-management)
-   - [Group Policies Overview](#group-policies-overview)
-4. [Security Hardening Active Directory](#security-hardening-active-directory)
-   - [Least Privilege Principle](#least-privilege-principle)
-   - [Privileged Access Workstations (PAWs)](#privileged-access-workstations-paws)
-   - [Secure Password Policies](#secure-password-policies)
-   - [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa)
-5. [Active Directory Auditing and Monitoring](#active-directory-auditing-and-monitoring)
-   - [Auditing Changes](#auditing-changes)
-   - [SIEM Integration](#siem-integration)
-   - [Backup and Recovery Plan](#backup-and-recovery-plan)
-6. [Automating Security Tasks with PowerShell](#automating-security-tasks-with-powershell)
-7. [Mitigating Common Active Directory Security Threats](#mitigating-common-active-directory-security-threats)
-8. [Folder Redirection and Home Folders](#folder-redirection-and-home-folders)
-9. [Additional Resources](#additional-resources)
-10. [Tools and Scripts](#tools-and-scripts)
-11. [Conclusion](#conclusion)
 
 ---
 
@@ -202,7 +215,3 @@ The repository contains useful **PowerShell scripts** for automating administrat
 
 ## **10. Conclusion**
 This guide serves as a comprehensive resource for setting up, managing, and securing **Microsoft Active Directory**. It emphasizes security hardening, automation, and best practices that are essential for maintaining a secure IT environment. This guide is suitable for both **system administrators** and professionals focused on **cybersecurity**.
-
----
-
-Feel free to contribute, report issues, or submit feature requests via GitHub. Your feedback helps improve this guide and serves the broader Windows and cybersecurity communities.

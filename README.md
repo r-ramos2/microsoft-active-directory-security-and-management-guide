@@ -216,6 +216,6 @@ This guide serves as a comprehensive resource for setting up, managing, and secu
 ---
 
 ## **8. Resources**
-- **Microsoft Documentation on Active Directory Security**: [Best Practices for Securing Active Directory](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
-- **National Institute of Standards and Technology (NIST)**: [Guide to Enterprise Password Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf).
-- **CIS Controls**: [Center for Internet Security](https://www.cisecurity.org/controls/).
+- [Best Practices for Securing Active Directory](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
+- [Guide to Enterprise Password Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf).
+- [Center for Internet Security](https://www.cisecurity.org/controls/).

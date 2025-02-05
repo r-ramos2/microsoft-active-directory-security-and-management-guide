@@ -191,9 +191,7 @@ Get-ADUser -Filter {LastLogonDate -lt $DateThreshold} | Select-Object Name, Last
 
 ## **7. Folder Redirection and Home Folders**
 
-### **7.1 Creating Central
-
-ized Home Folders**
+### **7.1 Creating Centralized Home Folders**
 1. Configure folder redirection:
    - Open **Group Policy Management**.
    - Navigate to **User Configuration > Policies > Windows Settings > Folder Redirection**.

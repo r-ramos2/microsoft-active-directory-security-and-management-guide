@@ -1,6 +1,10 @@
-# **Microsoft Active Directory Security and Management Guide**
+# Microsoft Active Directory Security and Management Guide
 
-## **Table of Contents**
+This guide provides a comprehensive framework for installing, configuring, managing, and securing **Microsoft Active Directory (AD)**. Active Directory is the centralized repository for managing user accounts, computers, groups, and network resources. Emphasizing security best practices, automation using PowerShell, and effective management strategies, this guide is an invaluable resource for system administrators and cybersecurity professionals.
+
+---
+
+## Table of Contents
 
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
@@ -37,59 +41,61 @@
 
 ---
 
-## **Overview**
-This guide provides a comprehensive framework for the installation, configuration, management, and security of **Microsoft Active Directory (AD)**. Active Directory serves as a centralized repository for managing user accounts, computers, groups, and network resources, enabling efficient user authentication and authorization. This guide emphasizes **security best practices**, automation, and effective management strategies, making it invaluable for IT professionals and cybersecurity practitioners.
+## Overview
 
-### **Key Features:**
+This guide details a comprehensive approach for the installation, configuration, management, and security of **Microsoft Active Directory (AD)**. The focus is on applying security best practices, automating administrative tasks using PowerShell, and ensuring efficient management of users, groups, and network resources.
+
+**Key Features:**
 - Installation and configuration of Active Directory.
 - Best practices for user and group management.
 - Implementation of security policies and auditing mechanisms.
-- Automation of administrative tasks using PowerShell scripts.
+- Automation of administrative tasks using PowerShell.
 - Configuration and management of Group Policy Objects (GPOs).
 - Centralized file management through home folder redirection.
-- Security hardening techniques against prevalent AD threats.
+- Security hardening techniques against common AD threats.
 
 ---
 
-## **Prerequisites**
+## Prerequisites
+
 - A Windows Server machine (2019, 2022, or later).
 - Administrator privileges on the server.
 - Familiarity with PowerShell and Active Directory concepts.
 
 ---
 
-## **1. Installation of Active Directory**
+## 1. Installation of Active Directory
 
-### **Installation Steps**
+### Installation Steps
 1. Open **Server Manager** on your Windows Server.
 2. Select **Add Roles and Features**.
 3. Choose **Role-based or feature-based installation** and click **Next**.
-4. Select the server from the server pool and click **Next**.
+4. Select your target server from the server pool and click **Next**.
 5. From the **Server Roles** list, select **Active Directory Domain Services (AD DS)**.
-6. Complete the wizard and promote the server to a domain controller:
-   - Click on the notification flag in **Server Manager** and select **Promote this server to a domain controller**.
+6. Complete the wizard and then promote the server to a domain controller:
+   - Click the notification flag in **Server Manager** and select **Promote this server to a domain controller**.
    - Follow the prompts to set up a new domain in a new forest.
 
-### **Verification**
-- Confirm successful installation by accessing **Active Directory Users and Computers (ADUC)**.
+### Verification
+- Confirm a successful installation by accessing **Active Directory Users and Computers (ADUC)**.
 
 ---
 
-## **2. Basic Active Directory Management**
+## 2. Basic Active Directory Management
 
-### **2.1 User and Group Management**
+### User and Group Management
 
-#### **Creating Users**
+#### Creating Users
 1. Open **Active Directory Users and Computers**.
 2. Right-click the desired **Organizational Unit (OU)**.
-3. Select **New > User**, and follow the prompts to create the user account.
+3. Select **New > User** and follow the prompts to create the user account.
 
-#### **Creating Groups**
+#### Creating Groups
 1. Right-click the desired **OU**.
 2. Select **New > Group**.
-3. Choose a group type (Security or Distribution) and fill in the required details.
+3. Choose a group type (Security or Distribution) and complete the required details.
 
-### **2.2 Group Policies Overview**
+### Group Policies Overview
 1. Open **Group Policy Management** from the **Tools** menu in **Server Manager**.
 2. Expand your domain tree under **Domains > [YourDomain].local**.
 3. To create a new GPO:
@@ -98,122 +104,130 @@ This guide provides a comprehensive framework for the installation, configuratio
 
 ---
 
-## **3. Security Hardening Active Directory**
+## 3. Security Hardening Active Directory
 
-### **3.1 Least Privilege Principle**
-- **Enforce the Least Privilege Principle**:
-  - Limit administrative rights to only those who need them.
-  - Implement **Role-Based Access Control (RBAC)** for more granular permissions, ensuring that users only have access to resources necessary for their job functions.
+### Least Privilege Principle
+- Enforce the least privilege principle by limiting administrative rights only to those who need them.
+- Implement **Role-Based Access Control (RBAC)** to ensure users have access only to the resources necessary for their roles.
 
-### **3.2 Privileged Access Workstations (PAWs)**
-- Utilize **Privileged Access Workstations** for administrative tasks to mitigate risks associated with malware and unauthorized access. PAWs should be isolated from the rest of the network and run minimal services.
+### Privileged Access Workstations (PAWs)
+- Use **Privileged Access Workstations** exclusively for administrative tasks to reduce risk.
+- Ensure PAWs are isolated from the rest of the network and run minimal services.
 
-### **3.3 Secure Password Policies**
+### Secure Password Policies
 1. Enforce strong password policies:
    - Minimum password length: **12 characters**.
    - Password expiration: **90 days**.
-   - Password history: Maintain at least **5 previous passwords**.
-
-2. To set these policies:
-   - Open **Group Policy Management**.
+   - Maintain at least **5 previous passwords**.
+2. Configure these policies via **Group Policy Management**:
    - Navigate to **Computer Configuration > Policies > Windows Settings > Security Settings > Account Policies > Password Policy**.
 
-### **3.4 Multi-Factor Authentication (MFA)**
-- Implement MFA for administrative accounts and users accessing sensitive resources. Use Azure AD MFA or Windows Hello for Business as secure options.
+### Multi-Factor Authentication (MFA)
+- Implement MFA for administrative accounts and users accessing sensitive resources.
+- Use available on-premises options to add an extra layer of security.
 
 ---
 
-## **4. Active Directory Auditing and Monitoring**
+## 4. Active Directory Auditing and Monitoring
 
-### **4.1 Auditing Changes**
-1. Enable auditing:
-   - Open **Group Policy Management**.
+### Auditing Changes
+1. Enable auditing through **Group Policy Management**:
    - Navigate to **Computer Configuration > Policies > Windows Settings > Security Settings > Advanced Audit Policy Configuration > Audit Policies > Directory Service Access**.
    - Enable **Audit Directory Service Changes** to monitor changes made to AD objects.
 
-### **4.2 SIEM Integration**
-- Integrate Active Directory logs with a **Security Information and Event Management (SIEM)** solution (e.g., Microsoft Sentinel, Splunk) for real-time monitoring and alerting on suspicious activities.
+### SIEM Integration
+- Integrate AD logs with a SIEM solution for real-time monitoring and alerting on suspicious activities.
 
-### **4.3 Backup and Recovery Plan**
-- Create and document a comprehensive backup and recovery plan for Active Directory to ensure business continuity. Utilize tools like Windows Server Backup or System State backup to protect AD data.
+### Backup and Recovery Plan
+- Develop and document a comprehensive backup and recovery plan for Active Directory.
+- Use tools such as Windows Server Backup or System State backups to protect AD data.
 
 ---
 
-## **5. Automating Security Tasks with PowerShell**
+## 5. Automating Security Tasks with PowerShell
 
-### **5.1 Automated User Auditing**
-Use scripts for regular audits of user accounts and group memberships. Example PowerShell script for auditing user logins:
+Automation helps reduce manual effort and human error.
+
+### Automated User Auditing
+Export AD user details (e.g., last logon dates) to a CSV file:
 
 ```powershell
-# Example PowerShell script for user auditing
-Get-ADUser -Filter * | Select-Object Name, LastLogonDate | Export-Csv -Path "C:\ADUserAudit.csv" -NoTypeInformation
+Get-ADUser -Filter * -Properties LastLogonDate |
+    Select-Object Name, LastLogonDate |
+    Export-Csv -Path "C:\ADUserAudit.csv" -NoTypeInformation
 ```
-This retrieves all AD user accounts with their last login dates and exports the information to a CSV file.
 
-### **5.2 Automating Group Policy Changes**
-Use PowerShell scripts to apply and audit GPOs. Example:
+### Automating Group Policy Changes
+Import a baseline GPO configuration:
 
 ```powershell
-# Example to import a GPO
 Import-GPO -Path "C:\GPOs\AD_GPO_baseline.xml" -Domain "yourdomain.local"
 ```
 
-### **5.3 Password Policy Compliance Check**
-To check compliance with your organization’s password policy:
+### Password Policy Compliance Check
+Check the current password policy:
 
 ```powershell
-# Check current password policy
 Get-ADDefaultDomainPasswordPolicy | Select-Object *
 ```
 
-### **5.4 Identifying Inactive Accounts**
-Identify inactive user accounts:
+### Identifying Inactive Accounts
+Find users who have been inactive for over 90 days:
 
 ```powershell
-# Find users inactive for over 90 days
 $InactiveDays = 90
 $DateThreshold = (Get-Date).AddDays(-$InactiveDays)
-Get-ADUser -Filter {LastLogonDate -lt $DateThreshold} | Select-Object Name, LastLogonDate | Export-Csv -Path "C:\InactiveUsers.csv" -NoTypeInformation
+Get-ADUser -Filter {LastLogonDate -lt $DateThreshold} |
+    Select-Object Name, LastLogonDate |
+    Export-Csv -Path "C:\InactiveUsers.csv" -NoTypeInformation
 ```
 
 ---
 
-## **6. Mitigating Common Active Directory Security Threats**
+## 6. Mitigating Common Active Directory Security Threats
 
-### **6.1 Pass-the-Hash and Pass-the-Ticket Attacks**
-- Implement **Microsoft Local Administrator Password Solution (LAPS)** for secure local admin password management. This helps ensure unique local admin passwords across devices.
-- Configure Kerberos with a **short ticket lifespan** (e.g., 4 hours) to reduce exposure to ticket-based attacks.
+### Pass-the-Hash and Pass-the-Ticket Attacks
+- Implement **Microsoft Local Administrator Password Solution (LAPS)** to ensure each device uses a unique, regularly rotated local admin password.
+- Configure Kerberos to use a shorter ticket lifespan (e.g., 4 hours) to limit exposure.
 
-### **6.2 Securing Domain Controllers**
-- Disable unnecessary services and limit network access to **Domain Controllers**. Employ **Secure Boot**, **BitLocker**, and **Windows Defender Credential Guard** for enhanced security.
+### Securing Domain Controllers
+- Disable unnecessary services on domain controllers.
+- Limit network access to domain controllers.
+- Apply security features such as Secure Boot, BitLocker, and Windows Defender Credential Guard.
 
 ---
 
-## **7. Folder Redirection and Home Folders**
+## 7. Folder Redirection and Home Folders
 
-### **7.1 Creating Centralized Home Folders**
-1. Configure folder redirection:
-   - Open **Group Policy Management**.
+### Creating Centralized Home Folders
+1. Configure folder redirection via Group Policy:
    - Navigate to **User Configuration > Policies > Windows Settings > Folder Redirection**.
-   - Right-click on the **Documents** folder, select **Properties**, and set the root path to a centralized network share: `\\SGC-AD\home\%username%`.
+   - Right-click the **Documents** folder, select **Properties**, and set the root path to a centralized network share (e.g., `\\SGC-AD\home\%username%`).
 
 ---
 
-## **9. Tools and Scripts**
-The repository contains useful **PowerShell scripts** for automating administrative tasks:
-- **user_audit.ps1:** Audits user activity and logins.
+## 8. Tools and Scripts
+
+The repository includes several PowerShell scripts for automating routine AD tasks:
+- **user_audit.ps1:** Audits user activity and logon details.
 - **password_policy_audit.ps1:** Checks compliance with password policies.
 - **account_expiry_check.ps1:** Identifies accounts nearing expiration.
-- **inactive_users_check.ps1:** Identifies user accounts that have been inactive for a specified period.
+- **inactive_users_check.ps1:** Detects inactive user accounts.
+- **gpo_import.ps1:** Imports baseline GPO settings.
+- **folder_redirection_setup.ps1:** Configures home folder redirection.
+
+Each script is well-commented and includes a separate configuration file to simplify future updates.
 
 ---
 
-## **10. Conclusion**
-This guide serves as a comprehensive resource for setting up, managing, and securing **Microsoft Active Directory**. It emphasizes security hardening, automation, and best practices that are essential for maintaining a secure IT environment. This guide is suitable for both **system administrators** and professionals focused on **cybersecurity**.
+## 9. Conclusion
+
+This guide provides a complete resource for setting up, managing, and securing **Microsoft Active Directory**. It emphasizes best practices, automation, and security hardening techniques essential for maintaining a secure IT environment. This guide is designed to help system administrators and cybersecurity professionals streamline operations while reducing risk.
 
 ---
 
-## **8. Resources**
+## 10. Resources
+
 - [Best Practices for Securing Active Directory](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)
 - [Guide to Enterprise Password Management](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63-3.pdf)
 - [Center for Internet Security](https://www.cisecurity.org/controls/)

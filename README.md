@@ -1,6 +1,6 @@
 # Microsoft Active Directory Security and Management Guide
 
-This guide provides a comprehensive framework for installing, configuring, managing, and securing **Microsoft Active Directory (AD)**. Active Directory is the centralized repository for managing user accounts, computers, groups, and network resources. Emphasizing security best practices, automation using PowerShell, and effective management strategies, this guide is an invaluable resource for system administrators and cybersecurity professionals.
+This guide provides a comprehensive framework for installing, configuring, managing, and securing **Microsoft Active Directory (AD)**. Active Directory is the centralized repository for managing user accounts, computers, groups, and network resources. Emphasizing security best practices, automation using PowerShell, and effective management strategies, this guide is an invaluable resource for cybersecurity professionals.
 
 ---
 
